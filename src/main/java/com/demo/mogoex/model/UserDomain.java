@@ -3,16 +3,14 @@ package com.demo.mogoex.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+
+import java.util.List;
+
+@Document(collection = "users")
+
 public class UserDomain {
 
-    public String getUserId() {
-        return userId;
-    }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
 
     @Id
     private String userId;
@@ -20,6 +18,14 @@ public class UserDomain {
     private String userAccount;
     private String userOrg;
 
+    private List<Address> addresses;
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
     public String getName() {
         return name;
     }
@@ -42,5 +48,23 @@ public class UserDomain {
 
     public void setUserOrg(String userOrg) {
         this.userOrg = userOrg;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDomain{" +
+                "name='" + name + '\'' +
+                ", userAccount='" + userAccount + '\'' +
+                ", userOrg='" + userOrg + '\'' +
+                ", addresses=" + addresses +
+                '}';
     }
 }

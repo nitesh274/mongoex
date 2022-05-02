@@ -29,9 +29,11 @@ public class UserDomainController {
     }
 
     @GetMapping("fetch/{name}")
-    public List<UserDomain> getbyUsername(@PathVariable String name) {
+    public UserDomain getbyUsername(@PathVariable String name) {
         LOG.info("Getting  user by name");
-        return repo.findByName(name);
+        UserDomain user= repo.findByAddressesId(name);
+        user.getAddresses();
+        return user;
     }
 
 }
